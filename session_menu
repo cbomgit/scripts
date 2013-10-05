@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if [ -f $HOME/.dmenurc ];then
+   source $HOME/.dmenurc
+   DMENU="$DMENU -p 'Session Menu'"
+else
+   DMENU="dmenu -i -p 'Session Menu'"
+fi
+
+CMD=$(echo "logout
+poweroff
+suspend
+reboot" | eval $DMENU)
+
+
+if [ $? -eq 0 ]; then
+   if [ "$CMD" == logout ];then
+      i3 exit
+   else
+      systemctl $CMD
+   fi
+fi
