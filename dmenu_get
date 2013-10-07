@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ -f $HOME/.dmenurc ]; then
+	source $HOME/.dmenurc
+	DMENU="$DMENU -p 'Install:'"
+else
+	DMENU="dmenu -i"
+fi
+
+
+PACKAGES=$(pacman -Ssq)
+
+TARGET=$(echo "$PACKAGES" | eval $DMENU)
+
+if [ $? -eq 0 ]; then
+	urxvtc -e sudo pacman -S $TARGET
+fi
+
+

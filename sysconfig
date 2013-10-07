@@ -1,0 +1,21 @@
+#!/bin/bash
+
+
+if [ -f $HOME/.dmenurc ];then
+   source  $HOME/.dmenurc
+   DMENU="$DMENU -p 'System Configuration'"
+else
+   DMENU="dmenu -i -p 'System Configuration'"
+fi
+
+FILE=$(cat $HOME/.dmenu_editrc | eval $DMENU)
+
+if [ $? -eq 0 ]; then
+   OWNER=$(stat -c %U $FILE)
+
+   if [ "$OWNER" == "root" ];then
+      urxvtc -e sudo vim $FILE
+   else
+      urxvtc -e vim $FILE
+   fi
+fi
