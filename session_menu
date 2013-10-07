@@ -17,6 +17,10 @@ if [ $? -eq 0 ]; then
    if [ "$CMD" == logout ];then
       i3 exit
    else
+<<<<<<< HEAD
       sudo systemctl $CMD
+=======
+      systemctl $CMD
+>>>>>>> 614d094cb2aad2d2dddbd5a12805022e04b2e017
    fi
 fi

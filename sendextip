@@ -1,0 +1,5 @@
+#!/bin/bash
+
+
+echo "$(curl -s icanhazip.com)" | mail -s "External IP for Today" christianbboman@gmail.com
+
