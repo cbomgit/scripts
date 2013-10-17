@@ -11,5 +11,5 @@ echo '[],'
 conky -i 1 -c /home/christian/.conkyrc 2>~/.conkylog
 
 # Now send blocks with information forever:
-exec conky -p 2 -c /home/christian/.conkyrc-i3
+exec conky -c /home/christian/.conkyrc-i3
 

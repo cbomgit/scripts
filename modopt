@@ -1,0 +1,9 @@
+#!/bin/bash
+
+MODULE=$1
+
+
+for i in /sys/module/$MODULE/parameters/*; do
+   PARAM=$(echo "$i" | cut -d'/' -f6)
+   echo "$PARAM: $(cat $i)"
+done

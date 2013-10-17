@@ -13,7 +13,6 @@ PACKAGES=$(pacman -Ssq)
 TARGET=$(echo "$PACKAGES" | eval $DMENU)
 
 if [ $? -eq 0 ]; then
-	urxvtc -e sudo pacman -S $TARGET
+	urxvtc -hold -e sudo pacman -S $TARGET 
 fi
-
 

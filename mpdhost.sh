@@ -9,5 +9,3 @@ else
 fi
 
 export MPD_HOST
-
-echo "$MPD_HOST"
