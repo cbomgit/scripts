@@ -15,7 +15,7 @@ reboot" | eval $DMENU)
 
 if [ $? -eq 0 ]; then
    if [ "$CMD" == logout ];then
-      eval $LOGOUT_CMD 
+      i3 exit
    else
       sudo systemctl $CMD
    fi

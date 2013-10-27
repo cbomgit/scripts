@@ -1,0 +1,4 @@
+#!/bin/bash
+
+xterm -title "ssh://rpi" -e ssh -p 42582 christian@rpi
+

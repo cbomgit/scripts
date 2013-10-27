@@ -1,0 +1,17 @@
+#!/bin/bash
+
+HOSTS="0
+rpi"
+
+if [ -f $HOME/.dmenurc ];then
+	source $HOME/.dmenurc
+	DMENU="$DMENU -p 'NCMPCPP Launch'"
+else
+	DMENU="dmenu -i -p 'NCMPCPP Launch'"
+fi
+
+HOST=$(echo "$HOSTS" | eval $DMENU)
+
+if [ $? -eq 0 ];then
+   exec urxvt -name ncmpcpp -e ncmpcpp -h $HOST
+fi

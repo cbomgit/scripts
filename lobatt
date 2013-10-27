@@ -1,0 +1,23 @@
+#!/bin/bash
+
+
+while true; do
+
+   battery='-';
+   bat_dir="/sys/class/power_supply/BAT0";
+
+   if [ -d "$bat_dir" ]; then
+      remaining="$(cat $bat_dir/charge_now)"
+      state="$(cat $bat_dir/status)"
+      total="$(cat $bat_dir/charge_full)"
+      battery_level="$((remaining *100 /total))"
+      battery="${battery_level}"
+   fi 
+
+   if [ "$state" == "Discharging" ] && (( "${battery}" <= 3 )); then
+      sudo systemctl suspend
+   fi
+
+   sleep 30s
+
+done
