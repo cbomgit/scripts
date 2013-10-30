@@ -14,8 +14,8 @@ if [ $? -eq 0 ]; then
    OWNER=$(stat -c %U $FILE)
 
    if [ "$OWNER" == "root" ];then
-      urxvtc -e sudo vim $FILE
+      urxvt -e sudo vim $FILE
    else
-      urxvtc -e vim $FILE
+      urxvt -e vim $FILE
    fi
 fi
