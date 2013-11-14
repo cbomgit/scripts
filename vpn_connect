@@ -1,6 +1,0 @@
-#!/bin/bash
-
-
-sudo -A vpnc
-
-exit

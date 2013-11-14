@@ -1,21 +1,92 @@
 #!/bin/bash
 
-
 if [ -f $HOME/.dmenurc ];then
    source  $HOME/.dmenurc
-   DMENU="$DMENU -p 'System Configuration'"
+   DMENU="$DMENU -p 'System'"
 else
-   DMENU="dmenu -i -p 'System Configuration'"
+   DMENU="dmenu -i -p 'System'"
 fi
 
-FILE=$(cat $HOME/.dmenu_editrc | eval $DMENU)
 
-if [ $? -eq 0 ]; then
-   OWNER=$(stat -c %U $FILE)
+OPTIONS="Services\nDisplay\nNetwork\nBackground\nPacman\nWindow Manager\nConky\nXresources\nStartup Apps\nShell Config\nLogin Config\nGTK Theme\nBoot"
 
-   if [ "$OWNER" == "root" ];then
-      urxvt -e sudo vim $FILE
-   else
-      urxvt -e vim $FILE
-   fi
-fi
+SELECTED=$(printf "$OPTIONS" | eval $DMENU)
+
+case "$SELECTED" in
+
+   "Boot")
+      OPTIONS="Loaded Modules\nBlacklisted Modules\nFstab\nGrub"
+
+      SELECTED=$(printf "$OPTIONS" | eval "$DMENU -p 'Boot Config'")
+
+      case "$SELECTED" in
+
+         "Loaded Modules")
+            MODULE=$(find /etc/modules-load.d -type f -printf "%f\n")
+            MODULE="$MODULE\nNew"
+            MODULE=$(printf "$MODULE" | eval $DMENU)
+            if [[ "$MODULE" == "New" ]]; then
+               NEW_MODULE=$(zenity --entry)
+               urxvtc -e sudo -A vim /etc/modules-load.d/$NEW_MODULE
+            else
+               urxvtc -e sudo -A vim /etc/modules-load.d/$MODULE
+            fi
+
+         ;;
+         "Blacklisted Modules")
+            MODULE=$(find /etc/modprope.d -type f -printf "%f\n")
+            MODULE="$MODULE\nNew"
+            MODULE=$(printf "$MODULE" | eval $DMENU)
+            if [[ "$MODULE" == "New" ]]; then
+               NEW_MODULE=$(zenity --entry)
+               urxvtc -e sudo vim /etc/modprobe.d/$NEW_MODULE
+            else
+               urxvtc -e sudo vim /etc/modprobe.d/$MODULE
+            fi
+         ;;   
+         "Fstab")
+            urxvtc -e -A sudo vim /etc/fstab
+         ;;
+         "Grub")
+            urxvtc -e -A sudo vim /etc/default/grub
+         ;;
+      esac            
+   ;;             
+   "GTK Theme")
+      lxappearance
+   ;;
+   "Shell Config")
+      urxvtc -e vim /home/christian/.zshrc
+    ;;
+   "Login Config")
+      urxvtc -e vim /home/christian/.zprofile
+    ;;
+   "Display")
+      arandr
+    ;;
+    "Network")
+      PROFILE=$(find /etc/netctl -type f -printf "%f\n" | grep wlan0 | eval $DMENU )
+      urxvtc -e sudo -A vim /etc/netctl/$PROFILE
+    ;;
+    "Background")
+      nitrogen
+    ;;
+    "Pacman")
+      urxvtc -e sudo -A vim /etc/pacman.conf
+    ;;
+    "Window Manager")
+      urxvtc -e ~/.bin/i3conf.sh 
+    ;;
+    "Conky")
+      urxvtc -e vim /home/christian/.conkyrc-i3
+    ;;
+    "Xresources")
+      urxvtc -e ~/.bin/Xrsc.sh
+    ;;
+    "Startup Apps")
+      urxvtc -e vim ~/.xinitrc
+    ;;
+esac
+     
+
+    

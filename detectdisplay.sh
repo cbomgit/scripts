@@ -4,7 +4,7 @@
 DETECT=$(xrandr -q | grep "HDMI1 connected")
 
 if [ $DETECT ]; then
-    setdisplay.sh -d
+    setdisplay.sh -e
     echo "Setting HDMI1 as primary display"
 else
     setdisplay.sh -l

@@ -1,3 +1,0 @@
-#!/bin/bash
-
-exec virtualbox --startvm $1 --fullscreen
