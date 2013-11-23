@@ -1,0 +1,16 @@
+#!/bin/bash 
+
+if [ -f $HOME/.dmenurc ]; then
+   source $HOME/.dmenurc
+   DMENU="$DMENU -p 'Dropbox Control'"
+else
+   DMENU="dmenu -i -p 'Dropbox Control'"
+fi
+
+CMDS=$(dropbox help | tail -n +7 | head -n 11 | eval $DMENU)
+
+if [ $? -eq 0 ]; then
+   
+   ACTION=$(echo "$CMDS" | awk {'print $1'})
+   dropbox $ACTION 
+fi

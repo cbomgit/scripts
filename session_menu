@@ -7,16 +7,23 @@ else
    DMENU="dmenu -i -p 'Session Menu'"
 fi
 
-CMD=$(echo "logout
-poweroff
-suspend
-reboot" | eval $DMENU)
+CMD=$(printf "Lock Screen\nLogout ${USER^}\nSuspend\nRestart\nShut Down" | eval $DMENU)
 
 
-if [ $? -eq 0 ]; then
-   if [ "$CMD" == logout ];then
-      i3 exit 
-   else
-      sudo systemctl $CMD
-   fi
-fi
+   case "$CMD" in
+      "Lock Screen")
+         i3lock -u -i ~/pictures/wallpapers/aperture_science.png
+      ;;
+      "Logout")
+         i3 exit
+      ;;
+      "Suspend")
+         sudo systemctl suspend
+      ;;
+      "Restart")
+         sudo systemctl reboot
+      ;;
+      "Shut Down")
+         sudo systemctl poweroff
+      ;;
+   esac

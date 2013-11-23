@@ -8,12 +8,12 @@ else
 fi
 
 
-OPTIONS="Services\nDisplay\nNetwork\nBackground\nPacman\nWindow Manager\nConky\nXresources\nStartup Apps\nShell Config\nLogin Config\nGTK Theme\nBoot"
+OPTIONS="Display\nNetwork\nBackground\nPacman\ni3\nConky\nXresources\nXinitrc\nShell Config\nLogin Config\nGTK Theme\nBoot"
 
 SELECTED=$(printf "$OPTIONS" | eval $DMENU)
 
 case "$SELECTED" in
-
+   
    "Boot")
       OPTIONS="Loaded Modules\nBlacklisted Modules\nFstab\nGrub"
 
@@ -27,9 +27,9 @@ case "$SELECTED" in
             MODULE=$(printf "$MODULE" | eval $DMENU)
             if [[ "$MODULE" == "New" ]]; then
                NEW_MODULE=$(zenity --entry)
-               urxvtc -e sudo -A vim /etc/modules-load.d/$NEW_MODULE
+               urxvtc -e sudo vim /etc/modules-load.d/$NEW_MODULE
             else
-               urxvtc -e sudo -A vim /etc/modules-load.d/$MODULE
+               urxvtc -e sudo vim /etc/modules-load.d/$MODULE
             fi
 
          ;;
@@ -45,10 +45,10 @@ case "$SELECTED" in
             fi
          ;;   
          "Fstab")
-            urxvtc -e -A sudo vim /etc/fstab
+            urxvtc -e sudo vim /etc/fstab
          ;;
          "Grub")
-            urxvtc -e -A sudo vim /etc/default/grub
+            urxvtc -e sudo vim /etc/default/grub
          ;;
       esac            
    ;;             
@@ -74,7 +74,7 @@ case "$SELECTED" in
     "Pacman")
       urxvtc -e sudo -A vim /etc/pacman.conf
     ;;
-    "Window Manager")
+    "i3")
       urxvtc -e ~/.bin/i3conf.sh 
     ;;
     "Conky")
@@ -83,7 +83,7 @@ case "$SELECTED" in
     "Xresources")
       urxvtc -e ~/.bin/Xrsc.sh
     ;;
-    "Startup Apps")
+    "Xinitrc")
       urxvtc -e vim ~/.xinitrc
     ;;
 esac
