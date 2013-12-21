@@ -6,7 +6,7 @@ else
    DMENU="dmenu -i"
 fi
 
-HDMI=$(xrandr -q | grep "HDMI connected")
+HDMI=$(xrandr -q | grep "HDMI1 connected")
 VGA=$(xrandr -q | grep "VGA1 connected")
 
 
@@ -32,21 +32,28 @@ CMD=$(printf "$DMENU_OPTIONS" | eval "$DMENU -p '$DISPLAYS'")
 case "$CMD" in
 
    "Laptop")
-      xrandr --output LVDS1 --auto --output HDMI1 --off --output VGA1 --off
+      XCMD="xrandr --output LVDS1 --auto --output HDMI1 --off --output VGA1 --off"
    ;;
    "Extend to HDMI")
-      xrandr --output HDMI1 --auto --output LVDS1 --auto --right-of HDMI1
+      XCMD="xrandr --output HDMI1 --mode 1920x1080i --output LVDS1 --auto --right-of HDMI1"
    ;;
-   "HDMI1")
-      xrandr --output HDMI1 --auto --output LVDS1 --off --output VGA1 --off
+   "HDMI")
+      XCMD="xrandr --output HDMI1 --mode 1920x1080i --output LVDS1 --off --output VGA1 --off"
    ;;
    "HDMI,VGA, No Laptop")
-      xrandr --output HDMI1 --auto --output VGA1 --auto --right-of HDMI1 --output LVDS1 --off
+      XCMD="xrandr --output HDMI1 --output 1920x1080i --output VGA1 --auto --right-of HDMI1 --output LVDS1 --off"
    ;;
    "Extend to VGA")
-      xrandr --output VGA1 --auto --left-of LVDS1 --output LVDS1 --auto 
+      XCMD="xrandr --output VGA1 --auto --left-of LVDS1 --output LVDS1 --auto" 
    ;;
    "VGA")
-      xrandr --output VGA1 --auto --output LVDS1 --off --output HDMI --off 
+      XCMD="xrandr --output VGA1 --auto --output LVDS1 --off --output HDMI --off"
    ;;
 esac
+
+#save the command to a file to be executed on next restart
+echo "$XCMD" > ~/.config/display_state
+
+eval $XCMD
+
+setbg.sh

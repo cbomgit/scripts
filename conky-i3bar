@@ -8,8 +8,6 @@ echo '['
 # We send an empty first array of blocks to make the loop simpler:
 echo '[],'
 
-conky -i 1 -c /home/christian/.conkyrc
-
 # Now send blocks with information forever:
 exec conky -c /home/christian/.conkyrc-i3
 

@@ -10,20 +10,20 @@ fi
 CMD=$(printf "Lock Screen\nLogout ${USER^}\nSuspend\nRestart\nShut Down" | eval $DMENU)
 
 
-   case "$CMD" in
-      "Lock Screen")
-         i3lock -u -i ~/pictures/wallpapers/aperture_science.png
-      ;;
-      "Logout")
-         i3 exit
-      ;;
-      "Suspend")
-         sudo systemctl suspend
-      ;;
-      "Restart")
-         sudo systemctl reboot
-      ;;
-      "Shut Down")
-         sudo systemctl poweroff
-      ;;
-   esac
+case "$CMD" in
+   "Lock Screen")
+      i3lock -u -i ~/Pictures/wallpapers/aperture_science.png
+   ;;
+   "Logout ${USER^}")
+      eval $LOGOUT_CMD 
+   ;;
+   "Suspend")
+      sudo systemctl suspend
+   ;;
+   "Restart")
+      sudo systemctl reboot
+   ;;
+   "Shut Down")
+      sudo systemctl poweroff
+   ;;
+esac
