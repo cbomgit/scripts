@@ -32,22 +32,22 @@ CMD=$(printf "$DMENU_OPTIONS" | eval "$DMENU -p '$DISPLAYS'")
 case "$CMD" in
 
    "Laptop")
-      XCMD="xrandr --output LVDS1 --auto --output HDMI1 --off --output VGA1 --off"
+      XCMD="xrandr --output LVDS1 --auto --primary --output HDMI1 --off --output VGA1 --off"
    ;;
    "Extend to HDMI")
-      XCMD="xrandr --output HDMI1 --mode 1920x1080i --output LVDS1 --auto --right-of HDMI1"
+      XCMD="xrandr --output HDMI1 --mode 1920x1080i --primary --output LVDS1 --auto --right-of HDMI1"
    ;;
    "HDMI")
-      XCMD="xrandr --output HDMI1 --mode 1920x1080i --output LVDS1 --off --output VGA1 --off"
+      XCMD="xrandr --output HDMI1 --mode 1920x1080i --primary --output LVDS1 --off --output VGA1 --off"
    ;;
    "HDMI,VGA, No Laptop")
-      XCMD="xrandr --output HDMI1 --output 1920x1080i --output VGA1 --auto --right-of HDMI1 --output LVDS1 --off"
+      XCMD="xrandr --output HDMI1 --output 1920x1080i --primary --output VGA1 --auto --right-of HDMI1 --output LVDS1 --off"
    ;;
    "Extend to VGA")
-      XCMD="xrandr --output VGA1 --auto --left-of LVDS1 --output LVDS1 --auto" 
+      XCMD="xrandr --output VGA1 --auto --left-of LVDS1 --primary --output LVDS1 --auto" 
    ;;
    "VGA")
-      XCMD="xrandr --output VGA1 --auto --output LVDS1 --off --output HDMI --off"
+      XCMD="xrandr --output VGA1 --auto --primary --output LVDS1 --off --output HDMI --off"
    ;;
 esac
 
