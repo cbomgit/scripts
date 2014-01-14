@@ -1,10 +1,9 @@
-#!/bin/bash
+#!/bin/zsh
 
-
-if [[ $(ip addr | grep wlan0 | grep inet | awk {'print $2'}) ]]; then
-   sudo -A systemctl stop netctl-auto@wlan0.service
+if [[ "$(iw dev wlan0 link)" == "Not connected." ]]; then
+   sudo systemctl start netctl-auto@wlan0.service
 else
-   sudo -A systemctl start netctl-auto@wlan0.service
+   sudo systemctl stop netctl-auto@wlan0.service
 fi
 
 

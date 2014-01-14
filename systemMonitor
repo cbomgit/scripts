@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec urxvt -name htop -e htop

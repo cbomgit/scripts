@@ -16,6 +16,4 @@ else
     fi
 fi
 
-setbg.sh
-
 exit
