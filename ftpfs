@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#script to mount an ftp folder, must be run as root
+#script to mount an Network folder, must be run as root
 
 
 #if [[ $EUID != 0 ]]; then
@@ -11,8 +11,8 @@
 modprobe fuse
 
 #make sure a username and host is passed
-if [[ $# -ne 3 ]]; then
-   echo "Usage: ftpfs [user] [host_ip] [host name]"
+if [[ $# -ne 5 ]]; then
+   echo "Usage: ftpfs [user] [host_ip] [host name] [port] [host directory]"
    exit 1
 fi
 
@@ -22,17 +22,11 @@ HOST_IP=$2
 
 HOSTNAME=$3
 
-if [ ! -d "/home/christian/ftp/$USER@$HOSTNAME" ]; then
-   mkdir "/home/christian/ftp/$USER@$HOSTNAME"
-   #chown christian:users "/home/christian/ftp/$USER@$HOSTNAME"
+PORT=$4
+
+HOST_DIR=$5
+if [ ! -d "/home/christian/Network/$USER@$HOSTNAME" ]; then
+   mkdir "/home/christian/Network/$USER@$HOSTNAME"
 fi
 
-echo -n "FTP Server password:"
-
-read -s PASSWORD
-
-curlftpfs $HOST_IP "/home/christian/ftp/$USER@$HOSTNAME" -o user=$USER:$PASSWORD
-
-
-
-
+sshfs $USER@$HOSTNAME:$HOST_DIR /home/christian/Network/$USER@$HOSTNAME -p $PORT

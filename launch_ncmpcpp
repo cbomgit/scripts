@@ -1,3 +1,0 @@
-#!/bin/bash
-
-exec urxvt -name ncmpcpp -e ncmpcpp

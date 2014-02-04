@@ -3,7 +3,7 @@
 
 while true; do
 
-   setbg.sh
+   /home/christian/.bin/setbg.sh
 
    sleep 60m
 

@@ -3,13 +3,7 @@
 
 #get on to the VPN
 if [ ! -f /var/run/vpnc/pid ]; then
-   echo "Please enter your password for UCD VPN:"
-
-   read -s PASSWORD
-
-   printf "$PASSWORD\n" | sudo -S vpnc
+   sudo -A vpnc
 fi
 
 sshfs bomanc@csegrid.ucdenver.pvt:/export/homes/bomanc ~/ftp/ucd -C -p 22
-
-

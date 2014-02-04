@@ -7,23 +7,17 @@ else
    DMENU="dmenu -i -p 'Session Menu'"
 fi
 
-CMD=$(printf "Lock Screen\nLogout ${USER^}\nSuspend\nRestart\nShut Down" | eval $DMENU)
+CMD=$(printf "Lock Screen\nLogout ${USER^}\nsuspend\nreboot\npoweroff" | eval $DMENU)
 
 
 case "$CMD" in
    "Lock Screen")
-      i3lock -u -i ~/Pictures/wallpapers/aperture_science.png
+      i3lock -ut -i ~/Pictures/wallpapers/aperture_science.png
    ;;
    "Logout ${USER^}")
       eval $LOGOUT_CMD 
    ;;
-   "Suspend")
-      sudo systemctl suspend
-   ;;
-   "Restart")
-      sudo systemctl reboot
-   ;;
-   "Shut Down")
-      sudo systemctl poweroff
+   *)
+   sudo systemctl $CMD
    ;;
 esac

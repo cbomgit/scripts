@@ -6,8 +6,11 @@ else
    DMENU="dmenu -i"
 fi
 
-BOOKMARK=$(dumpbookmarks.py | eval $DMENU)
+DMENU="$DMENU -p 'Quickmarks:' -w 400"
+QUICKMARKS=/home/christian/.config/dwb/default/quickmarks
+
+GOTO=$(cat $QUICKMARKS | awk '{print $1}' | eval $DMENU)
 
 if [ $? -eq 0 ]; then
-   exec dwb $BOOKMARK
+   exec dwb $(cat $QUICKMARKS | grep "$GOTO" | awk '{print $2}')
 fi
