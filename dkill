@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DMENU="dmenu -p 'Kill Process: ' -dim .5 -w 1000 -l 768 -y 0 -x 0 -i -fn 'Terminus-10:normal'"
+DMENU="dmenu -p 'Kill Process: ' -dim .5 -w 1000 -l 768 -y 0 -x 0 -i -fn 'Liberation Mono-11:normal'"
 
 
 PROCESS=$(ps -U christian -u christian u --no-headers --sort pcpu | awk '{print $11}' | eval $DMENU)

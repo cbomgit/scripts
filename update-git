@@ -1,15 +1,12 @@
 #!/bin/bash
 
 AUR_DIR=/home/christian/.aur
-MAKEPKG="makepkg -fc"
-PASSWORD=$(~/.bin/dpass)
+MAKEPKG="makepkg -fcsi --noconfirm"
 
 for i in $AUR_DIR/*-git; do
 
    cd $i
-   eval $MAKEPKG
-
-   echo $PASSWROD | sudo -s pacman -U --noconfirm $i.pkg.tar.gz 
+   eval $MAKEPKG 
 
    cd $AUR_DIR
 

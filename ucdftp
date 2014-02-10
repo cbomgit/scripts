@@ -1,9 +1,0 @@
-#!/bin/bash
-
-
-#get on to the VPN
-if [ ! -f /var/run/vpnc/pid ]; then
-   sudo -A vpnc
-fi
-
-sshfs bomanc@csegrid.ucdenver.pvt:/export/homes/bomanc ~/ftp/ucd -C -p 22
