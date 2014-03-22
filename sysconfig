@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ -f $HOME/.dmenurc ];then
-   source  $HOME/.dmenurc
+if [ -f $HOME/.config/dmenurc ];then
+   source  $HOME/.config/dmenurc
    DMENU="$DMENU -p 'System'"
 else
    DMENU="dmenu -i -p 'System'"
@@ -68,9 +68,8 @@ case "$SELECTED" in
       arandr
     ;;
     "Network")
-      #PROFILE=$(find /etc/netctl -type f -printf "%f\n" | grep wlan0 | eval $DMENU )
-      #eval $DEFAULT_TERM -e sudo -A vim /etc/netctl/$PROFILE
-      nm-connection-editor
+      PROFILE=$(find /etc/netctl -type f -printf "%f\n" | grep wlan0 | eval $DMENU )
+      eval $DEFAULT_TERM -e sudo -A vim /etc/netctl/$PROFILE
     ;;
     "Background")
       nitrogen

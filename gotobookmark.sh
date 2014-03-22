@@ -1,16 +1,16 @@
 #!/bin/bash
 
-if [ -f $HOME/.dmenurc ]; then
-   source $HOME/.dmenurc
+if [ -f $HOME/.config/dmenurc ]; then
+   source $HOME/.config/dmenurc
 else
    DMENU="dmenu -i"
 fi
 
-DMENU="$DMENU -p 'Quickmarks:' -w 400"
-QUICKMARKS=/home/christian/.config/dwb/default/quickmarks
+DMENU="$DMENU -p 'Quickmarks:' -w 1366 -l 100 -fn 'Liberation Mono-10:normal'"
+BOOKMARKS=/home/christian/.config/chromium/Default/Bookmarks
 
-GOTO=$(cat $QUICKMARKS | awk '{print $1}' | eval $DMENU)
+GOTO=$(gotobookmark.py | eval $DMENU)
 
 if [ $? -eq 0 ]; then
-   exec dwb $(cat $QUICKMARKS | grep "$GOTO" | awk '{print $2}')
+   exec $BROWSER $(echo "$GOTO" | awk '{print $2}')
 fi

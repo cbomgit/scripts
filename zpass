@@ -1,3 +1,0 @@
-#!/bin/bash
-
-/usr/bin/dmenu -fn 'Liberation Mono-10:normal' -noinput -mask -dim 0.6 -p "Password:" -x 500 -y 400 -w 200 -l 2

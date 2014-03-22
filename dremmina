@@ -1,0 +1,20 @@
+#!/usr/bin/bash
+
+if [ -f $XDG_CONFIG_HOME/dmenurc ]; then
+   . $XDG_CONFIG_HOME/dmenurc
+else
+   DMENU="dmenu -i"
+fi
+
+DMENU="$DMENU -p 'Remote Desktop Launcher'"
+
+REMOTE_HOST=$(ls /home/christian/.remmina/*.remmina | cut -d'/' -f5 | cut -d'.' -f1 | eval $DMENU)
+
+if [ $? -eq 0 ]; then
+   if [[ "$REMOTE_HOST" == "new" ]]; then
+      remmina -n
+      exit
+   else
+      remmina -c /home/christian/.remmina/$REMOTE_HOST.remmina
+   fi
+fi

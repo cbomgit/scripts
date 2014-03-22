@@ -1,0 +1,9 @@
+#!/bin/bash
+
+source $HOME/.config/dmenurc
+
+#/usr/bin/dmenu -fn 'Liberation Mono-14:normal' -noinput -mask -dim 0.6 -p "Enter Admin Password:" -x 450 -y 350 -w 500 -l 3
+
+DMENU="$DMENU -p 'Enter Admin Password:' -noinput -mask"
+
+eval $DMENU 

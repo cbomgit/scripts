@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [ -f $HOME/.config/dmenurc ]; then
+   . $HOME/.config/dmenurc
+else
+   DMENU="dmenu -i"
+fi
+
+DMENU="$DMENU -p 'MPD Contrl: '"
+options="toggle\nnext\nprev\nclear\nrandom\nupdate\nstop\nall"
+CMD=$(printf "$options" | eval $DMENU)
+
+
+if [ $? -eq 0 ]; then
+   if [[ "$CMD" == "all" ]]; then
+      mpc clear
+      mpc listall | mpc add
+      mpc random on
+      mpc play
+   else
+      mpc $CMD
+   fi
+fi

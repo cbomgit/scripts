@@ -1,3 +1,3 @@
 #!/bin/bash
 
-exec xterm -e ssh -p 22 christian@192.168.0.14
+exec xterm -e ssh -p 22 pi@xbmc-60e5

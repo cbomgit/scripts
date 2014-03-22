@@ -7,7 +7,7 @@ if [ $? -eq 0 ]; then
    export XAUTHORITY=/home/christian/.Xauthority
      
    CARD=/sys/class/drm/card0/card0-
-   LAYOUT_DIR=$HOME/.screen_layouts
+   LAYOUT_DIR=$HOME/.config/.screen_layouts
    ID=""
 
    for i in $CARD*; do

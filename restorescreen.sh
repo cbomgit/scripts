@@ -8,7 +8,7 @@ export XAUTHORITY=/home/christian/.Xauthority
 CARD=/sys/devices/pci0000:00/0000:00:02.0/drm/card0
 
 #director where all xrandr commands will be stored
-LAYOUT_DIR=/home/christian/.screen_layouts
+LAYOUT_DIR=/home/christian/.config/screen_layouts
 
 
 while inotifywait -re modify,create,delete,open,close,close_write,access $CARD; do

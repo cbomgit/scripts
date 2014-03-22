@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ -f $HOME/.config/dmenurc ]; then 
+   . $HOME/.config/dmenurc
+   DMENU="$DMENU -p 'Run a Command' -noinput"
+else
+   DMENU="dmenu -i -p 'Run a Command' -noinput"
+fi
+
+CMD=$(eval $DMENU)
+
+eval $CMD

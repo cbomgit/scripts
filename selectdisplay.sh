@@ -1,7 +1,7 @@
 #!/usr/bin/zsh
 
-if [ -f $HOME/.dmenurc ]; then
-   source $HOME/.dmenurc
+if [ -f $HOME/.config/dmenurc ]; then
+   source $HOME/.config/dmenurc
 else
    DMENU="dmenu -i"
 fi

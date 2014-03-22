@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ -f $XDG_CONFIG_HOME/dmenurc ]; then
+   . $XDG_CONFIG_HOME/dmenurc
+else
+   DMENU="dmenu -i -p 'Netctl'"
+fi
+
+PROFILE=$(netctl-auto list | eval $DMENU)
+
+if [ $? -eq 0 ]; then
+   if [[ "$(echo $PROFILE | awk '{print $1}')" == "*" ]]; then
+      netctl-auto disable $(echo $PROFILE | awk '{print $2}')
+   else
+      netctl-auto enable $PROFILE
+      netctl-auto switch-to $PROFILE
+   fi
+fi
