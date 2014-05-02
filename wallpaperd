@@ -1,8 +1,5 @@
 #!/bin/bash
 
-export DISPLAY=:0
-export XAUTHORITY=~/.Xauthority
-
 while true; do
 
    /home/christian/.bin/setbg.sh

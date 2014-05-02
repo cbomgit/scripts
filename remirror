@@ -1,0 +1,6 @@
+#!/bin/bash
+
+mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+reflector --verbose -l 100 -p http --sort rate --save /etc/pacman.d/mirrorlist
+
+pacman -Syy

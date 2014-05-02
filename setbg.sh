@@ -1,7 +1,5 @@
 #!/bin/bash
 
-export DISPLAY=:0
-export XAUTHORITY=~/.Xauthority
 
 if [ -z "$1" ]; then
     find ~/Dropbox/wallpapers -type f \( -name '*.jpg' -o -name '*.png' \) -print0 | shuf -n1 -z | xargs -0 feh --bg-fill

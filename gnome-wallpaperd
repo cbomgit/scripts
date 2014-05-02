@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ $(pgrep autobg) ]; then
+   echo "Autobg already running. Killing..."
+   pkill autobg
+fi
+
+
+exec autobg
