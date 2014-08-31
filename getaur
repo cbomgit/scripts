@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cd /home/christian/.aur
+
+cower -d $1
+
+if [ $? -eq 0 ]; then
+
+   cd $1
+
+   makepkg -fsci
+
+fi
