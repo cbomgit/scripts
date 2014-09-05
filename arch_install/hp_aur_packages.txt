@@ -1,0 +1,7 @@
+archlinux-artwork
+broadcom-wl
+cower
+dropbox
+google-chrome
+libgcrypt15
+sublime-text
