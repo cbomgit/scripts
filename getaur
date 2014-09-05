@@ -2,6 +2,8 @@
 
 cd /home/christian/.aur
 
+[ ! -d $1 ] && rm -rf $1
+
 cower -d $1
 
 if [ $? -eq 0 ]; then

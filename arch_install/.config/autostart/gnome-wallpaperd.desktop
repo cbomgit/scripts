@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Gnome Wallpaper
+Type=Application
+Comment=Wallpaper Rotation Daemon
+Exec=/home/christian/.bin/gnome-wallpaperd 
+Categories=System;
+GenericName=Wallpaper
+X-Desktop-File-Install-Version=0.22
