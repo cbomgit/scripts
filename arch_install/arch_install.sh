@@ -7,7 +7,7 @@ if [ ! $1 ]; then
 fi
 
 pacman -Syy
-pacman -Syu zsh vim
+pacman -S --noconfirm zsh vim
 
 setfont Lat2-Terminus16
 
@@ -36,7 +36,7 @@ systemctl enable systemd-resolved systemd-networkd
 ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
 
 #install and set bootloader
-pacman -S gummiboot
+pacman -S --noconfirm gummiboot
 gummiboot install
 
 #configure the repos
@@ -48,14 +48,7 @@ pacman -Syy
 
 #install the rest of the system
 pacman -S --needed --noconfirm $(cat native_packages.txt)
-wget https://aur.archlinux.org/packages/co/cower/cower.tar.gz
-cower -d pacaur
-cd pacaur 
-makepkg -si --noconfirm
-cd ..
-
 pacman -S --noconfirm infinality-bundle ibfonts-meta-base infinality-bundle-multilib 
-pacaur -S --noconfirm --noedit $(cat aur_packages.txt)
 
 ################do user stuff#############################
 
@@ -66,7 +59,7 @@ groupadd sambashare  #great sambshare group
 
 #add me and smbguest
 useradd -m -G wheel,power,storage,audio,network,mail -s /usr/bin/zsh christian
-useradd -C "Samba Guest" -d /dev/null -s /bin/false smbguest
+useradd -c "Samba Guest" -d /dev/null -s /bin/false smbguest
 
 #set my password
 passwd christian
@@ -89,6 +82,6 @@ cat fstab | grep samba >> /etc/fstab
 
 ###################create initramfs and enable services#######
 mkinitcpio -p linux
-systemctl enable gdm plexmediaserver sshd transmission smbd nmbd
+systemctl enable gdm sshd transmission smbd nmbd
 
 exit 0
