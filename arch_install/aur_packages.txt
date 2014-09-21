@@ -1,11 +1,10 @@
 bin32-jre
-cower
+bin32-firefox
 dropbox
 lib32-gtk-engine-murrine
-mpdris2-git
 nautilus-dropbox
-pacaur
 plexmediaserver
 sublime-text
 virtualbox-ext-oracle
 zukitwo-themes
+google-chrome
