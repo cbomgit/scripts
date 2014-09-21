@@ -1,10 +1,15 @@
 bin32-jre
-bin32-firefox
+cower
 dropbox
+dropbox-cli
+google-chrome
+greybird-gtk-theme
+i7z-git
 lib32-gtk-engine-murrine
 nautilus-dropbox
+pacaur
 plexmediaserver
+powerdown-git
 sublime-text
 virtualbox-ext-oracle
 zukitwo-themes
-google-chrome
