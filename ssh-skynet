@@ -1,0 +1,7 @@
+#!/bin/bash
+
+i3-msg 'workspace next'
+NUM=$(ws_num.py)
+
+i3-msg "rename workspace to $NUM:skynet"
+exec urxvt -e ssh -p 42581 christian@skynet
