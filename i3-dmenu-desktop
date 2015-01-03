@@ -43,7 +43,6 @@ my @entry_types;
 my $dmenu_rc = '/home/christian/.config/dmenurc_perl';
 open my $rc, $dmenu_rc or die "Could not open $dmenu_rc: $!";
 my $dmenu_cmd = <$rc>;
-#my $dmenu_cmd = 'dmenu -y 5 -i -p "Applications:" -dim .7 -nb "#1f1f1f" -b -fn "Liberation Mono-15:normal"';
 my $result = GetOptions(
     'dmenu=s' => \$dmenu_cmd,
     'entry-type=s' => \@entry_types,

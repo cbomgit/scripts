@@ -13,13 +13,13 @@ CMD=$(printf "Lock Screen\nLogout ${USER^}\nsuspend\nreboot\npoweroff" | eval $D
 if [ $? -eq 0 ]; then
    case "$CMD" in
       "Lock Screen")
-         i3lock -t -u -i ~/Pictures/i3_lock/blue_screen.png
+         i3lock -i ~/Pictures/piano.png -d 0 -I 10 -p default -u
       ;;
       "Logout ${USER^}")
-         eval $LOGOUT_CMD 
+         i3 exit
       ;;
       *)
-      sudo systemctl $CMD
+      systemctl $CMD
       ;;
    esac
 
