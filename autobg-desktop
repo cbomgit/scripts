@@ -5,7 +5,7 @@ export XAUTHORITY=/home/christian/.Xauthority
 
 while true; do
 
-   IMAGE=$(find ~/Seafile/Wallpapers/dual_walls -type f \( -name '*.jpg' -o -name '*.png' \) -print0 | shuf -n1 -z)
+   IMAGE=$(find /mnt/raid/Wallpapers/dual_walls -type f \( -name '*.jpg' -o -name '*.png' \) -print0 | shuf -n1 -z)
    gsettings set org.gnome.desktop.background picture-uri "file://$IMAGE"
    gsettings set org.gnome.desktop.screensaver picture-uri "file://$IMAGE"
    sleep 30m

@@ -1,8 +1,11 @@
 #!/bin/bash
 
-while true; do
+if [ $(pgrep i3bg) ]; then
+   echo "Autobg already running. Killing..."
+   pkill i3bg
+fi
 
-   /home/christian/.bin/setbg.sh
-   sleep 30m
 
-done
+i3bg &
+
+wait

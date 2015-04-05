@@ -13,10 +13,18 @@ CMD=$(printf "Lock Screen\nLogout ${USER^}\nsuspend\nreboot\npoweroff" | eval $D
 if [ $? -eq 0 ]; then
    case "$CMD" in
       "Lock Screen")
-         i3lock -i ~/Pictures/piano.png -d 0 -I 10 -p default -u
+         xautolock -locknow
       ;;
       "Logout ${USER^}")
          i3 exit
+      ;;
+      "Headphones")
+         mpc enable 3
+         mpc disable 2
+      ;;
+      "Speakers")
+         mpc enable 2
+         mpc disable 3
       ;;
       *)
       systemctl $CMD

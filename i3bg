@@ -1,0 +1,8 @@
+#!/bin/bash
+
+while true; do
+
+   /home/christian/.bin/setbg.sh
+   sleep 30m
+
+done

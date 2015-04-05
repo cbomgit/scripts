@@ -49,9 +49,9 @@ if len(sys.argv) != 2:
 
 #call switch_workspace with upper and lower bounds based on connected screens
 if os.popen('''xrandr | grep "HDMI1 connected"''').read() == "" and \
-   os.popen('''xrandr | grep "VGA1 connected"''').read() == ""  :
+   os.popen('''xrandr | grep "HDMI2 connected"''').read() == ""  :
     switch_workspace(sys.argv[1], 0, 9)
-elif focused_output() == "LVDS1":
+elif focused_output() == "HDMI2":
     switch_workspace(sys.argv[1], 5, 9)
 else:
     switch_workspace(sys.argv[1], 0, 4)

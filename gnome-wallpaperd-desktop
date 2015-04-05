@@ -2,7 +2,7 @@
 
 if [ $(pgrep autobg) ]; then
    echo "Autobg already running. Killing..."
-   pkill autobg
+   pkill autobg-desktop
 fi
 
 

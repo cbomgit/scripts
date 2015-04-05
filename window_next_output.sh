@@ -3,8 +3,8 @@
     #!/bin/bash
      
     # screen width (the effective resolution! just set yours here.)
-    screen_width1=1440
-    screen_width2=1366
+    screen_width1=1920
+    screen_width2=1080
      
     # active window
     window=`xdotool getactivewindow`

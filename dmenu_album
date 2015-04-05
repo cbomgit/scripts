@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ -f $HOME/.config/dmenurc ]; then
+   source $HOME/.config/dmenurc
+   DMENU="$DMENU -p 'Add Album'"
+else
+   DMENU="dmenu -i -p 'Add Album;"
+fi
+
+mpc clear > /dev/null
+ALBUM=$(mpc list album | eval $DMENU)
+if [ $? -eq 0 ]; then
+   mpc search album "$ALBUM" | mpc add
+   mpc play > /dev/null
+fi
+

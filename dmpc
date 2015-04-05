@@ -7,7 +7,7 @@ else
 fi
 
 DMENU="$DMENU -p 'MPD Contrl: '"
-options="toggle\nnext\nprev\nclear\nrandom\nupdate\nstop\nall"
+options="toggle\nnext\nprev\nclear\nrandom\nupdate\nstop\nall\nHeadphones\nSpeakers\nPlaylist"
 CMD=$(printf "$options" | eval $DMENU)
 
 
@@ -17,6 +17,12 @@ if [ $? -eq 0 ]; then
       mpc listall | mpc add
       mpc random on
       mpc play
+   elif [[ "$CMD" == "Headphones" ]]; then
+      mpc enable 3
+      mpc disable 2
+   elif [[ "$CMD" == "Speakers" ]]; then
+      mpc enable 2
+      mpc disable 3
    else
       mpc $CMD
    fi

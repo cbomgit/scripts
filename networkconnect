@@ -7,3 +7,4 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswi
 
 bin32-firefox -new-window http://vpn.cusys.edu
 
+
